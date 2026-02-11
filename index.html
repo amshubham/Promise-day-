@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Promise Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+
+/* RED BACKGROUND */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:#c40018;
+  color:white;
+  overflow:hidden;
+}
+
+/* CARD */
+.card{max-width:350px;}
+
+/* TITLE */
+.title{
+  font-family:'Pacifico',cursive;
+  font-size:38px;
+  line-height:1.2;
+}
+
+.heart{
+  font-size:60px;
+  margin:15px 0;
+  animation:beat 1s infinite;
+}
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+}
+
+/* MESSAGE */
+.msg{
+  margin:10px 0;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* NEXT BUTTON */
+.next{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#c40018;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* YES BUTTON */
+.yes{
+  margin:10px;
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#c40018;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* NO BUTTON */
+.no{
+  margin:10px;
+  padding:8px 18px;
+  border:none;
+  border-radius:30px;
+  background:#222;
+  color:#ccc;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* RESULT */
+#result{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:bold;
+  display:none;
+}
+
+/* PAGE SYSTEM */
+.page{display:none;}
+.page.active{display:block;}
+
+/* PROMISE RAIN */
+.rain{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  animation:fall 4s linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0;}
+}
+
+/* GLOW */
+.glow{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle,
+      rgba(255,255,255,0.3),
+      rgba(255,255,255,0.05),
+      transparent);
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- PAGE 1 -->
+  <div class="page active">
+    <div class="title">Happy Promise Day!</div>
+    <div class="heart">🤍</div>
+    <div class="msg">I want to tell you something ❤️</div>
+    <button class="next" onclick="next()">Next ➜</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="msg">✨ In every situation, my support will always be with you.
+No matter how hard life gets, I will stand by your side forever.🤝</div>
+    <button class="next" onclick="next()">Next ➜</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="msg">I promise to stay honest with you, always.
+My loyalty will forever belong to you.💍</div>
+    <button class="next" onclick="next()">Next ➜</button>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="msg">✨ I promise to be the reason behind your smile every day.
+Today, tomorrow, always. 😊</div>
+    <button class="next" onclick="next()">Next ➜</button>
+  </div>
+
+  <!-- FINAL PAGE (original design kept) -->
+  <div class="page">
+    <div class="title">Happy Promise Day!</div>
+    <div class="heart">🤍</div>
+    <div class="msg">I promise to love you forever 💞</div>
+
+    <button class="yes" onclick="yes()">Yes Forever ❤️</button>
+    <button class="no" onclick="moveNo()">No 😜</button>
+
+    <div id="result">Together Forever 🥰</div>
+  </div>
+
+</div>
+
+<script>
+/* PAGE CONTROL */
+let pages=document.querySelectorAll(".page");
+let current=0;
+
+function next(){
+  pages[current].classList.remove("active");
+  current++;
+  if(current>=pages.length) current=pages.length-1;
+  pages[current].classList.add("active");
+}
+
+/* YES MAGIC */
+function yes(){
+  result.style.display="block";
+
+  if(!document.querySelector(".glow")){
+    let g=document.createElement("div");
+    g.className="glow";
+    document.body.appendChild(g);
+  }
+
+  const emojis=["💞","🤝","❤️","💕","💍"];
+  for(let i=0;i<35;i++){
+    let e=document.createElement("div");
+    e.className="rain";
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left=Math.random()*100+"%";
+    e.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),4000);
+  }
+}
+
+/* NO RUN */
+let size=1;
+function moveNo(){
+  let btn=document.querySelector(".no");
+  size-=0.1;
+  if(size<0.3) size=0.3;
+  let x=Math.random()*120-60;
+  let y=Math.random()*120-60;
+  btn.style.transform=`translate(${x}px,${y}px) scale(${size})`;
+}
+</script>
+
+</body>
+</html>
