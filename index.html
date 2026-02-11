@@ -10,33 +10,36 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 
-/* RED BACKGROUND */
+/* BACKGROUND */
 body{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
   background:#c40018;
   color:white;
   overflow:hidden;
+  text-align:center;
 }
 
 /* CARD */
-.card{max-width:350px;}
+.card{
+  width:340px;
+}
 
 /* TITLE */
 .title{
   font-family:'Pacifico',cursive;
-  font-size:38px;
+  font-size:36px;
   line-height:1.2;
 }
 
 .heart{
-  font-size:60px;
-  margin:15px 0;
+  font-size:55px;
+  margin:10px 0;
   animation:beat 1s infinite;
 }
+
 @keyframes beat{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.2);}
@@ -44,12 +47,22 @@ body{
 
 /* MESSAGE */
 .msg{
-  margin:10px 0;
   font-size:18px;
   font-weight:bold;
+  margin:10px 0;
 }
 
-/* NEXT BUTTON */
+/* IMAGE */
+img{
+  width:220px;
+  height:280px;
+  object-fit:cover;
+  border-radius:15px;
+  margin:10px 0;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* BUTTONS */
 .next{
   margin-top:15px;
   padding:10px 20px;
@@ -61,7 +74,6 @@ body{
   cursor:pointer;
 }
 
-/* YES BUTTON */
 .yes{
   margin:10px;
   padding:12px 26px;
@@ -74,7 +86,6 @@ body{
   cursor:pointer;
 }
 
-/* NO BUTTON */
 .no{
   margin:10px;
   padding:8px 18px;
@@ -95,20 +106,9 @@ body{
   display:none;
 }
 
-/* PAGE SYSTEM */
+/* PAGE */
 .page{display:none;}
 .page.active{display:block;}
-
-/* PROMISE RAIN */
-.rain{
-  position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:fall 4s linear forwards;
-}
-@keyframes fall{
-  to{transform:translateY(110vh);opacity:0;}
-}
 
 /* GLOW */
 .glow{
@@ -121,6 +121,17 @@ body{
       transparent);
   pointer-events:none;
 }
+
+/* PROMISE RAIN */
+.rain{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  animation:fall 4s linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0;}
+}
 </style>
 </head>
 
@@ -132,39 +143,36 @@ body{
   <div class="page active">
     <div class="title">Happy Promise Day!</div>
     <div class="heart">🤍</div>
-    <div class="msg">I want to tell you something ❤️</div>
+    <div class="msg">I want to make some promises to you ❤️</div>
     <button class="next" onclick="next()">Next ➜</button>
   </div>
 
   <!-- PAGE 2 -->
   <div class="page">
-    <div class="msg">✨ In every situation, my support will always be with you.
-No matter how hard life gets, I will stand by your side forever.🤝</div>
+    <div class="msg">I promise I will always support you 🤝</div>
     <button class="next" onclick="next()">Next ➜</button>
   </div>
 
   <!-- PAGE 3 -->
   <div class="page">
-    <div class="msg">I promise to stay honest with you, always.
-My loyalty will forever belong to you.💍</div>
+    <div class="msg">I promise to stay honest and loyal 💍</div>
     <button class="next" onclick="next()">Next ➜</button>
   </div>
 
   <!-- PAGE 4 -->
   <div class="page">
-    <div class="msg">✨ I promise to be the reason behind your smile every day.
-Today, tomorrow, always. 😊</div>
+    <div class="msg">I promise to make you smile every day 😊</div>
     <button class="next" onclick="next()">Next ➜</button>
   </div>
-  
-   <!-- PHOTO 5 -->
+
+  <!-- PHOTO PAGE -->
   <div class="page">
     <div class="title">Our Special Memory 📸</div>
     <img src="https://uploads.onecompiler.io/44cvhfahm/44d963wgj/56934.jpg">
     <button class="next" onclick="next()">Next ➜</button>
   </div>
 
-  <!-- FINAL PAGE (original design kept) -->
+  <!-- FINAL PAGE -->
   <div class="page">
     <div class="title">Happy Promise Day!</div>
     <div class="heart">🤍</div>
@@ -179,7 +187,7 @@ Today, tomorrow, always. 😊</div>
 </div>
 
 <script>
-/* PAGE CONTROL */
+/* PAGE SYSTEM */
 let pages=document.querySelectorAll(".page");
 let current=0;
 
@@ -190,7 +198,7 @@ function next(){
   pages[current].classList.add("active");
 }
 
-/* YES MAGIC */
+/* YES */
 function yes(){
   result.style.display="block";
 
@@ -212,7 +220,7 @@ function yes(){
   }
 }
 
-/* NO RUN */
+/* NO */
 let size=1;
 function moveNo(){
   let btn=document.querySelector(".no");
