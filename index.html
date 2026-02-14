@@ -1,235 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Promise Day ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<title>Valentine Special ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 
-/* BACKGROUND */
+/* BODY */
+
 body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#c40018;
-  color:white;
-  overflow:hidden;
-  text-align:center;
+margin:0;
+font-family:Poppins;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+text-align:center;
+background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center;
+background-size:cover;
 }
 
-/* CARD */
-.card{
-  width:340px;
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+z-index:-1;
 }
 
-/* TITLE */
-.title{
-  font-family:'Pacifico',cursive;
-  font-size:36px;
-  line-height:1.2;
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:600px;
 }
 
-.heart{
-  font-size:55px;
-  margin:10px 0;
-  animation:beat 1s infinite;
+/* PHOTOS */
+
+.photos img{
+width:120px;
+height:120px;
+margin:10px;
+border-radius:15px;
+object-fit:cover;
+animation:float 3s infinite ease-in-out;
 }
 
-@keyframes beat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-}
-
-/* MESSAGE */
-.msg{
-  font-size:18px;
-  font-weight:bold;
-  margin:10px 0;
-}
-
-/* IMAGE */
-img{
-  width:220px;
-  height:280px;
-  object-fit:cover;
-  border-radius:15px;
-  margin:10px 0;
-  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
 /* BUTTONS */
-.next{
-  margin-top:15px;
-  padding:10px 20px;
-  border:none;
-  border-radius:25px;
-  background:white;
-  color:#c40018;
-  font-weight:bold;
-  cursor:pointer;
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:18px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+background:#ff4d6d;
+color:white;
 }
 
-.yes{
-  margin:10px;
-  padding:12px 26px;
-  border:none;
-  border-radius:30px;
-  background:white;
-  color:#c40018;
-  font-size:18px;
-  font-weight:bold;
-  cursor:pointer;
-}
+button:hover{transform:scale(1.1);}
 
-.no{
-  margin:10px;
-  padding:8px 18px;
-  border:none;
-  border-radius:30px;
-  background:#222;
-  color:#ccc;
-  font-size:14px;
-  cursor:pointer;
-  transition:0.3s;
-}
+.no{background:#333;position:relative;}
 
-/* RESULT */
-#result{
-  margin-top:10px;
-  font-size:20px;
-  font-weight:bold;
-  display:none;
-}
+/* MESSAGE */
 
-/* PAGE */
+.messageBox{display:none;}
+.nextBtn{display:none;}
+
+/* SECOND WEBSITE */
+
 .page{display:none;}
-.page.active{display:block;}
 
-/* GLOW */
-.glow{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:radial-gradient(circle,
-      rgba(255,255,255,0.3),
-      rgba(255,255,255,0.05),
-      transparent);
-  pointer-events:none;
+.envelope{
+width:200px;
+height:120px;
+background:#ff4d6d;
+margin:auto;
+cursor:pointer;
+border-radius:5px;
 }
 
-/* PROMISE RAIN */
-.rain{
-  position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:fall 4s linear forwards;
+.handwriting{
+font-family:'Dancing Script';
+font-size:28px;
 }
-@keyframes fall{
-  to{transform:translateY(110vh);opacity:0;}
+
+.heart{
+position:absolute;
+animation:floatHeart 6s linear infinite;
 }
+
+@keyframes floatHeart{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="container">
 
-  <!-- PAGE 1 -->
-  <div class="page active">
-    <div class="title">Happy Promise Day!</div>
-    <div class="heart">🤍</div>
-    <div class="msg">I want to make some promises to you ❤️</div>
-    <button class="next" onclick="next()">Next ➜</button>
-  </div>
+<!-- ================= FIRST PAGE ================= -->
 
-  <!-- PAGE 2 -->
-  <div class="page">
-    <div class="msg">I promise I will always support you 🤝</div>
-    <button class="next" onclick="next()">Next ➜</button>
-  </div>
+<div id="photoSection">
 
-  <!-- PAGE 3 -->
-  <div class="page">
-    <div class="msg">I promise to stay honest and loyal 💍</div>
-    <button class="next" onclick="next()">Next ➜</button>
-  </div>
+<h2>Our Memories 🌅</h2>
 
-  <!-- PAGE 4 -->
-  <div class="page">
-    <div class="msg">I promise to make you smile every day 😊</div>
-    <button class="next" onclick="next()">Next ➜</button>
-  </div>
+<div class="photos">
+<img src="https://uploads.onecompiler.io/44cvhfahm/44d963wgj/56934.jpg">
+<img src="https://uploads.onecompiler.io/44cvhfahm/44d3jgexa/56561.jpg">
+<img src="https://uploads.onecompiler.io/44cvhfahm/44cwmvqzx/56259.png">
+</div>
 
-  <!-- PHOTO PAGE -->
-  <div class="page">
-    <div class="title">Our Special Memory 📸</div>
-    <img src="https://uploads.onecompiler.io/44cvhfahm/44d963wgj/56934.jpg">
-    <button class="next" onclick="next()">Next ➜</button>
-  </div>
+<button onclick="showMessage()">Check Photos ❤️</button>
 
-  <!-- FINAL PAGE -->
-  <div class="page">
-    <div class="title">Happy Promise Day!</div>
-    <div class="heart">🤍</div>
-    <div class="msg">I promise to love you forever 💞</div>
+</div>
 
-    <button class="yes" onclick="yes()">Yes Forever ❤️</button>
-    <button class="no" onclick="moveNo()">No 😜</button>
+<!-- MESSAGE -->
 
-    <div id="result">Together Forever 🥰</div>
-  </div>
+<div id="messageSection" class="messageBox">
+
+<h2>You are my sunset and my sea ❤️<br>Will you be my Valentine?</h2>
+
+<button onclick="yesClicked()">YES ❤️</button>
+<button class="no" id="noBtn">NO 😅</button>
+
+<br>
+
+<button id="nextBtn" class="nextBtn" onclick="goNext()">NEXT 💌</button>
+
+</div>
+
+<!-- ================= SECOND WEBSITE ================= -->
+
+<div id="secondSite" class="page">
+
+<div id="passwordPage">
+<h2>Enter Secret Password 🔐</h2>
+<input type="password" id="pass">
+<br>
+<button onclick="checkPass()">Open</button>
+</div>
+
+<div id="envelopePage" style="display:none;">
+<h2>Tap to Open 💌</h2>
+<div class="envelope" onclick="openLetter()"></div>
+</div>
+
+<div id="letterPage" style="display:none;">
+<div class="handwriting" id="typeText"></div>
+</div>
+
+</div>
 
 </div>
 
 <script>
-/* PAGE SYSTEM */
-let pages=document.querySelectorAll(".page");
-let current=0;
 
-function next(){
-  pages[current].classList.remove("active");
-  current++;
-  if(current>=pages.length) current=pages.length-1;
-  pages[current].classList.add("active");
+/* SHOW MESSAGE */
+
+function showMessage(){
+photoSection.style.display="none";
+messageSection.style.display="block";
 }
 
-/* YES */
-function yes(){
-  result.style.display="block";
+/* YES CLICK */
 
-  if(!document.querySelector(".glow")){
-    let g=document.createElement("div");
-    g.className="glow";
-    document.body.appendChild(g);
-  }
-
-  const emojis=["💞","🤝","❤️","💕","💍"];
-  for(let i=0;i<35;i++){
-    let e=document.createElement("div");
-    e.className="rain";
-    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-    e.style.left=Math.random()*100+"%";
-    e.style.animationDuration=(2+Math.random()*3)+"s";
-    document.body.appendChild(e);
-    setTimeout(()=>e.remove(),4000);
-  }
+function yesClicked(){
+alert("Happy Valentine's Day ❤️😍");
+document.getElementById("nextBtn").style.display="inline-block";
 }
 
-/* NO */
-let size=1;
-function moveNo(){
-  let btn=document.querySelector(".no");
-  size-=0.1;
-  if(size<0.3) size=0.3;
-  let x=Math.random()*120-60;
-  let y=Math.random()*120-60;
-  btn.style.transform=`translate(${x}px,${y}px) scale(${size})`;
+/* NEXT BUTTON */
+
+function goNext(){
+messageSection.style.display="none";
+secondSite.style.display="block";
 }
+
+/* PASSWORD */
+
+function checkPass(){
+if(pass.value.toLowerCase()=="yagni"){
+passwordPage.style.display="none";
+envelopePage.style.display="block";
+}
+}
+
+/* LETTER TYPE */
+
+const text=`My Dearest Yagni ❤️,
+
+From the day you came into my life,
+everything feels magical ✨
+I love you forever 💞`;
+
+let i=0;
+
+function typeWriter(){
+if(i<text.length){
+typeText.innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+function openLetter(){
+envelopePage.style.display="none";
+letterPage.style.display="block";
+typeWriter();
+}
+
+/* NO BUTTON RUN */
+
+noBtn.addEventListener("mouseover",function(){
+let x=Math.random()*300-150;
+let y=Math.random()*200-100;
+noBtn.style.transform=`translate(${x}px,${y}px)`;
+});
+
+/* FLOAT HEARTS */
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+
+setInterval(createHeart,300);
+
 </script>
 
 </body>
